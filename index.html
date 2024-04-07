@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="index.js"></script>
+    <title>Churrascômetro</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Churrascômetro 🥩⏲🍺</h1>
+
+      <div id="forms">
+        <!-- Formulário Cadastro -->
+        <div id="form-cadastro" class="form card">
+          <h2>Cadastro</h2>
+          <form>
+            <div>
+              <label class="label">
+                <span>Nome</span>
+                <input type="text" id="input-nome" />
+              </label>
+              <label class="label">
+                <span>E-mail</span>
+                <input type="email" id="input-email" />
+              </label>
+              <label class="label">
+                <span>CEP</span>
+                <input type="text" id="input-cep" />
+              </label>
+              <label class="label">
+                <input type="checkbox" checked id="input-promo" />
+                Aceito receber e-mails com promoções
+              </label>
+            </div>
+            <div class="btns-wrapper">
+              <button type="reset" id="btn-cadastro-reset">Limpar</button>
+              <button type="button" id="btn-cadastro-submit">Enviar</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Formulário Quantidade pessoas -->
+        <div id="form-participantes" class="form card">
+          <h2>Participantes</h2>
+          <form>
+            <div>
+              <label class="label">
+                <span>Homens</span>
+                <input
+                  type="number"
+                  min="0"
+                  max="50"
+                  value="0"
+                  id="input-part-homens" />
+              </label>
+              <label class="label">
+                <span>Mulheres</span>
+                <input
+                  type="number"
+                  min="0"
+                  max="50"
+                  value="0"
+                  id="input-part-mulheres" />
+              </label>
+              <label class="label">
+                <span>Crianças</span>
+                <input
+                  type="number"
+                  min="0"
+                  max="50"
+                  value="0"
+                  id="input-part-criancas" />
+              </label>
+              <label class="label">
+                <span>Consomem Bebidas Alcoólicas</span>
+                <input
+                  type="number"
+                  min="0"
+                  max="50"
+                  value="0"
+                  id="input-part-alcool" />
+              </label>
+            </div>
+            <div class="btns-wrapper">
+              <button type="button" id="btn-part-submit">Calcular</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tabela Quantitativos -->
+      <div id="quantitativos" class="card">
+        <h2>Quantitativos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantidade</th>
+              <th>Unidade</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Carne</td>
+              <td>4</td>
+              <td>Kg</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
