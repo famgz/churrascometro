@@ -63,12 +63,12 @@ function checarCadastro() {
 }
 
 function validarCEP(cep) {
-  var regexCEP = /^[0-9]{5}-[0-9]{3}$/;
+  const regexCEP = /^[0-9]{5}-[0-9]{3}$/;
   return regexCEP.test(cep);
 }
 
 function validarEmail(email) {
-  var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regexEmail.test(email);
 }
 
@@ -89,7 +89,7 @@ function obterInputsCadastro() {
   }
 
   if (!validarCEP(cep)) {
-    alert('CEP inválido');
+    alert('CEP inválido. Deve ser inserido no formato: XXXXX-XXX');
     return;
   }
 

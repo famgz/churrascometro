@@ -238,10 +238,12 @@ span.descricao {
         & tr {
           & td {
             text-align: center;
+            font-weight: 400;
           }
 
           & td:first-of-type {
             text-align: left;
+            font-weight: bold;
           }
         }
       }
