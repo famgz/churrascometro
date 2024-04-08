@@ -15,6 +15,7 @@ const inputPartMulheres = document.getElementById('input-part-m');
 const inputPartCriancas = document.getElementById('input-part-c');
 const inputPartBebemAlcool = document.getElementById('input-part-ba');
 const btnPartSubmit = document.getElementById('btn-part-submit');
+const btnPartReset = document.getElementById('btn-part-reset');
 
 const tabelaQuantitativos = document.getElementById('quantitativos');
 const resultados = document.getElementById('resultados');
@@ -30,7 +31,6 @@ function carregarLocalStorage() {
 }
 
 function checarCadastro() {
-  const status = formCadastro.querySelector('.status-wrapper');
   if (!cadastro) {
     return;
   }
@@ -57,7 +57,7 @@ function checarCadastro() {
 
   formCadastro.style.backgroundColor = '#f5f5f5';
 
-  status.innerHTML = status.innerHTML = 'Cadastro realizado com sucesso! ✅';
+  inserirSucesso('cadastro');
 
   inputPartHomens.focus();
 }
@@ -155,6 +155,17 @@ function calcularItens({ homens, mulheres, criancas, bebemAlcool }) {
   }
 }
 
+function inserirSucesso(type) {
+  let status;
+  if (type === 'cadastro') {
+    status = formCadastro.querySelector('.status-wrapper');
+    status.innerHTML = 'Cadastro realizado com sucesso! ✅';
+  } else {
+    status = formParticipantes.querySelector('.status-wrapper');
+    status.innerHTML = 'Cálculo realizado com sucesso! ✅';
+  }
+}
+
 function inserirSpinner(type) {
   let status;
   if (type === 'cadastro') {
@@ -165,7 +176,7 @@ function inserirSpinner(type) {
   status.innerHTML = '<div class="spinner"></div>';
 }
 
-function removerSpinner(type) {
+function limparStatus(type) {
   let status;
   if (type === 'cadastro') {
     status = formCadastro.querySelector('.status-wrapper');
@@ -188,6 +199,7 @@ async function handleCadastroSubmit() {
         salvarCadastro(dadosInput);
         checarCadastro();
         resolve('Cadastro concluído');
+        inserirSucesso('cadastro');
       }, loadingIntervalInMs);
     } catch (err) {
       console.error(err.message);
@@ -212,7 +224,7 @@ async function handleParticipantesSubmit() {
       setTimeout(() => {
         calcularItens(itens);
         resolve('Calculo executado com sucesso!');
-        removerSpinner('participantes');
+        inserirSucesso('participantes');
       }, loadingIntervalInMs);
     } catch (err) {
       console.error(err.message);
@@ -246,6 +258,12 @@ btnPartSubmit.addEventListener('click', async () => {
   } catch (err) {
     console.error(err.message);
   }
+});
+
+// Limpar campos participantes
+btnPartReset.addEventListener('click', () => {
+  limparStatus('participantes');
+  resultados.innerHTML = '';
 });
 
 checarCadastro();
