@@ -10,7 +10,7 @@ O objetivo desta atividade é desenvolver uma calculadora chamada "Churrascômet
 ### Passo 1: Informações do Participante
 - Nome (obrigatório)
 - E-mail (obrigatório e válido)
-- CEP
+- CEP (obrigatório e válido)
 - Consentimento para receber e-mails com promoções (marcado automaticamente)
 
 ### Passo 2: Quantidades de Participantes
