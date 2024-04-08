@@ -190,7 +190,6 @@ async function handleCadastroSubmit() {
         salvarCadastro(dadosInput);
         checarCadastro();
         resolve('Cadastro concluído');
-        removerSpinner('cadastro');
       }, loadingIntervalInMs);
     } catch (err) {
       console.error(err.message);
