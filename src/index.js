@@ -120,7 +120,7 @@ function calcularItens({ homens, mulheres, criancas, bebemAlcool }) {
     {
       item: 'Carne',
       unidade: 'Kg',
-      qtde: 0.4 * homens + 0.32 * mulheres + 0.2 * criancas,
+      qtde: (0.4 * homens + 0.32 * mulheres + 0.2 * criancas).toFixed(2),
     },
     {
       item: 'Pão de alho',
@@ -163,7 +163,6 @@ function inserirSpinner(type) {
     status = formParticipantes.querySelector('.status-wrapper');
   }
   status.innerHTML = '<div class="spinner"></div>';
-  console.log('Inserted spinner:', status);
 }
 
 function removerSpinner(type) {
@@ -174,7 +173,6 @@ function removerSpinner(type) {
     status = formParticipantes.querySelector('.status-wrapper');
   }
   status.innerHTML = '';
-  console.log('Removed spinner:', status);
 }
 
 async function handleCadastroSubmit() {
