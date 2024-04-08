@@ -62,6 +62,16 @@ function checarCadastro() {
   inputPartHomens.focus();
 }
 
+function validarCEP(cep) {
+  var regexCEP = /^[0-9]{5}-[0-9]{3}$/;
+  return regexCEP.test(cep);
+}
+
+function validarEmail(email) {
+  var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regexEmail.test(email);
+}
+
 function obterInputsCadastro() {
   const nome = inputNome.value.trim();
   const email = inputEmail.value.trim();
@@ -69,6 +79,17 @@ function obterInputsCadastro() {
   const receberPromos = inputPromos.checked;
 
   if (!(nome && email && cep)) {
+    alert('Todos os campos deve ser preenchidos');
+    return;
+  }
+
+  if (!validarEmail(email)) {
+    alert('Email inválido');
+    return;
+  }
+
+  if (!validarCEP(cep)) {
+    alert('CEP inválido');
     return;
   }
 
@@ -189,7 +210,6 @@ function limparStatus(type) {
 async function handleCadastroSubmit() {
   const dadosInput = obterInputsCadastro();
   if (!dadosInput) {
-    alert('Todos os campos deve ser preenchidos');
     return;
   }
   inserirSpinner('cadastro');
