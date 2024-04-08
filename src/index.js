@@ -129,7 +129,7 @@ function calcularItens({ homens, mulheres, criancas, bebemAlcool }) {
     },
     { item: 'Carvão', unidade: 'Kg', qtde: 1 * pessoas },
     { item: 'Sal', unidade: 'g', qtde: 4 * pessoas },
-    { item: 'Gelo', unidade: 'Kg', qtde: 5 * Math.floor(pessoas / 10) },
+    { item: 'Gelo', unidade: 'Saco 5Kg', qtde: 5 * Math.floor(pessoas / 10) },
     {
       item: 'Refrigerante',
       unidade: 'Garrafa 2L',
