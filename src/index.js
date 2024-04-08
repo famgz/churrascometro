@@ -286,4 +286,14 @@ btnPartReset.addEventListener('click', () => {
   resultados.innerHTML = '';
 });
 
+// Limitar bebemAlcool input para soma de homens e mulheres
+[inputPartHomens, inputPartMulheres].forEach((i) =>
+  i.addEventListener('change', () => {
+    const max =
+      parseInt(inputPartHomens.value) + parseInt(inputPartMulheres.value);
+    console.log(max);
+    inputPartBebemAlcool.setAttribute('max', max);
+  })
+);
+
 checarCadastro();
