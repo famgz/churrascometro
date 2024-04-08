@@ -14,107 +14,137 @@
   </head>
   <body>
     <div class="container">
-      <h1>Churrascômetro 🥩⏲🍺</h1>
+      <div id="hero">
+        <h1>🥩🍺 Churrascômetro ⏲</h1>
+        <h3>A fórmula do churrasco churrasco ideal em suas mãos!</h3>
+      </div>
 
       <div id="forms">
         <!-- Formulário Cadastro -->
-        <div id="form-cadastro" class="form card">
-          <h2>Cadastro</h2>
-          <form>
+        <div>
+          <span class="descricao">1. Complete o cadastro</span>
+          <div id="form-cadastro" class="form card">
             <div>
-              <label class="label">
-                <span>Nome</span>
-                <input type="text" id="input-nome" />
-              </label>
-              <label class="label">
-                <span>E-mail</span>
-                <input type="email" id="input-email" />
-              </label>
-              <label class="label">
-                <span>CEP</span>
-                <input type="text" id="input-cep" />
-              </label>
-              <label class="label">
-                <input type="checkbox" checked id="input-promo" />
-                Aceito receber e-mails com promoções
-              </label>
+              <h2>Cadastro</h2>
+              <span id="icone-remover" title="Clique para remover o cadastro"
+                >✖</span
+              >
             </div>
-            <div class="btns-wrapper">
-              <button type="reset" id="btn-cadastro-reset">Limpar</button>
-              <button type="button" id="btn-cadastro-submit">Enviar</button>
-            </div>
-          </form>
+            <p class="informativo">Informe seus dados abaixo</p>
+            <form>
+              <div>
+                <label class="label">
+                  <span>Nome</span>
+                  <input type="text" required id="input-nome" />
+                </label>
+                <label class="label">
+                  <span>E-mail</span>
+                  <input type="email" required id="input-email" />
+                </label>
+                <label class="label">
+                  <span>CEP</span>
+                  <input type="text" required id="input-cep" />
+                </label>
+                <label class="label">
+                  <input type="checkbox" checked id="input-receber-promos" />
+                  Aceito receber e-mails com promoções
+                </label>
+              </div>
+              <div class="status-wrapper"></div>
+              <div class="btns-wrapper">
+                <button type="reset" class="btn-light" id="btn-cadastro-reset">
+                  Limpar
+                </button>
+                <button type="submit" class="btn-dark" id="btn-cadastro-submit">
+                  Enviar
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
 
         <!-- Formulário Quantidade pessoas -->
-        <div id="form-participantes" class="form card">
-          <h2>Participantes</h2>
-          <form>
-            <div>
-              <label class="label">
-                <span>Homens</span>
-                <input
-                  type="number"
-                  min="0"
-                  max="50"
-                  value="0"
-                  id="input-part-homens" />
-              </label>
-              <label class="label">
-                <span>Mulheres</span>
-                <input
-                  type="number"
-                  min="0"
-                  max="50"
-                  value="0"
-                  id="input-part-mulheres" />
-              </label>
-              <label class="label">
-                <span>Crianças</span>
-                <input
-                  type="number"
-                  min="0"
-                  max="50"
-                  value="0"
-                  id="input-part-criancas" />
-              </label>
-              <label class="label">
-                <span>Consomem Bebidas Alcoólicas</span>
-                <input
-                  type="number"
-                  min="0"
-                  max="50"
-                  value="0"
-                  id="input-part-alcool" />
-              </label>
-            </div>
-            <div class="btns-wrapper">
-              <button type="button" id="btn-part-submit">Calcular</button>
-            </div>
-          </form>
+        <div>
+          <span class="descricao">2. Selecione a quantidade de pessoas</span>
+          <div id="form-participantes" class="form card">
+            <h2>Participantes</h2>
+            <p class="informativo">No mínimo 1 adulto</p>
+            <form>
+              <div>
+                <label class="label">
+                  <span>Homens</span>
+                  <input
+                    type="number"
+                    min="0"
+                    max="50"
+                    value="0"
+                    id="input-part-h" />
+                </label>
+                <label class="label">
+                  <span>Mulheres</span>
+                  <input
+                    type="number"
+                    min="0"
+                    max="50"
+                    value="0"
+                    id="input-part-m" />
+                </label>
+                <label class="label">
+                  <span>Crianças</span>
+                  <input
+                    type="number"
+                    min="0"
+                    max="50"
+                    value="0"
+                    id="input-part-c" />
+                </label>
+                <label class="label">
+                  <span>Consomem Bebidas Alcoólicas</span>
+                  <input
+                    type="number"
+                    min="0"
+                    max="50"
+                    value="0"
+                    id="input-part-ba" />
+                </label>
+              </div>
+              <div class="status-wrapper"></div>
+              <div class="btns-wrapper">
+                <button type="reset" class="btn-light" id="btn-part-reset">
+                  Limpar
+                </button>
+                <button type="button" class="btn-dark" id="btn-part-submit">
+                  Calcular
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
 
       <!-- Tabela Quantitativos -->
-      <div id="quantitativos" class="card">
-        <h2>Quantitativos</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Quantidade</th>
-              <th>Unidade</th>
-            </tr>
-          </thead>
+      <div id="quantitativos">
+        <span class="descricao">3. Vamos às compras!</span>
+        <div class="card">
+          <h2>Quantitativos</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Quantidade</th>
+                <th>Unidade</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            <tr>
-              <td>Carne</td>
+            <tbody id="resultados">
+              <tr>
+                <!-- <td>Carne</td>
               <td>4</td>
-              <td>Kg</td>
-            </tr>
-          </tbody>
-        </table>
+              <td>Kg</td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </body>

@@ -1,5 +1,5 @@
 body {
-  height: 100vh;
+  min-height: 100vh;
   background-color: cornsilk;
 }
 
@@ -17,15 +17,24 @@ body {
 }
 
 h1 {
+  padding-bottom: 12px;
+}
+
+#hero {
   text-align: center;
-  padding: 32px 0;
+  padding: 40px 0;
+
+  & h3 {
+    margin-top: 12px;
+  }
 }
 
 #forms {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 12px;
   flex-wrap: wrap;
+  margin-bottom: 24px;
 }
 
 .flex {
@@ -35,16 +44,54 @@ h1 {
 
 .card {
   background-color: #fefefe;
-  padding: 12px;
+  padding: 16px;
   border-radius: 5px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
+  min-height: 360px;
   width: 100%;
+  min-width: 300px;
 
   & h2 {
     margin-bottom: 12px;
   }
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4px 8px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.btn-dark {
+  background-color: rgb(25, 105, 186);
+  color: white;
+  border: none;
+}
+
+.btn-dark-disabled {
+  background-color: #aaa;
+  color: white;
+  border: none;
+}
+
+.btn-light {
+  background-color: white;
+  color: #1969ba;
+  border: 1px solid;
+}
+
+.btn-light-disabled {
+  background-color: #f5f5f5;
+  color: #aaa;
+  border: 1px solid;
 }
 
 .form {
@@ -93,16 +140,6 @@ h1 {
     display: flex;
     gap: 4px;
   }
-
-  & button {
-    padding: 4px 8px;
-    width: 100%;
-    border: none;
-    background-color: rgb(25, 105, 186);
-    color: white;
-    font-weight: bold;
-    border-radius: 4px;
-  }
 }
 
 #form-cadastro {
@@ -113,6 +150,42 @@ h1 {
   & span {
     text-transform: uppercase;
   }
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+
+    & #icone-remover {
+      display: flex;
+      cursor: pointer;
+      height: 28px;
+      width: 28px;
+      padding-bottom: 2px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      font-weight: bolder;
+      color: #444;
+    }
+  }
+}
+
+.informativo {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+span.descricao {
+  display: inline-block;
+  margin-bottom: 8px;
+  text-wrap: nowrap;
+  color: #666;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 #form-participantes {
@@ -134,38 +207,73 @@ h1 {
 }
 
 #quantitativos {
-  margin: 0 auto;
-  margin-top: 20px;
+  margin: 32px auto;
 
-  & table {
-    width: 100%;
-    border-collapse: collapse;
+  > div {
+    & table {
+      width: 100%;
+      border-collapse: collapse;
 
-    & td,
-    th {
-      padding: 6px 0;
-    }
-
-    & td {
-      border-top: 1px solid #ccc;
-    }
-
-    & thead {
-      & th:first-of-type {
-        text-align: left;
+      & td,
+      th {
+        padding: 6px 0;
       }
-    }
 
-    & tbody {
-      & tr {
-        & td {
-          text-align: center;
-        }
+      & th {
+        color: #777;
+        text-transform: uppercase;
+      }
 
-        & td:first-of-type {
+      & td {
+        border-top: 1px solid #ccc;
+      }
+
+      & thead {
+        & th:first-of-type {
           text-align: left;
         }
       }
+
+      & tbody {
+        & tr {
+          & td {
+            text-align: center;
+          }
+
+          & td:first-of-type {
+            text-align: left;
+          }
+        }
+      }
     }
+  }
+}
+
+.status-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  color: #555;
+  font-weight: bold;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 5px solid #777;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
