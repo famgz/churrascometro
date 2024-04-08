@@ -1,5 +1,7 @@
 # Projeto Prático: Churrascômetro
 
+![screenshot](https://raw.githubusercontent.com/famgz/churrascometro/main/screenshot.jpg)
+
 ## Objetivo
 O objetivo desta atividade é desenvolver uma calculadora chamada "Churrascômetro" que tem o intuito de calcular os itens para um churrasco em 3 passos distintos.
 
