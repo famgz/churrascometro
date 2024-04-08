@@ -157,7 +157,7 @@ function calcularItens({ homens, mulheres, criancas, bebemAlcool }) {
       qtde: 1 * Math.floor(pessoas / 5),
     },
     { item: 'Água', unidade: 'Garrafa 1L', qtde: 1 * Math.floor(pessoas / 5) },
-    { item: 'Cerveja', unidade: 'Garrafa 600ml', qtde: 3 * adultos },
+    { item: 'Cerveja', unidade: 'Garrafa 600ml', qtde: 3 * bebemAlcool },
   ];
 
   resultados.innerHTML = '';
