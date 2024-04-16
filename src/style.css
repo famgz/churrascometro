@@ -142,7 +142,7 @@ button {
   }
 }
 
-#form-cadastro {
+#cadastro {
   & input {
     width: 100%;
   }
@@ -188,7 +188,7 @@ span.descricao {
   font-size: 0.9rem;
 }
 
-#form-participantes {
+#participantes {
   & label {
     display: flex;
     justify-content: space-between;

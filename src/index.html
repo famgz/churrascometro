@@ -24,7 +24,7 @@
         <!-- Formulário Cadastro -->
         <div>
           <span class="descricao">1. Complete o cadastro</span>
-          <div id="form-cadastro" class="form card">
+          <div id="cadastro" class="form card">
             <div>
               <h2>Cadastro</h2>
               <span id="icone-remover" title="Clique para remover o cadastro"
@@ -32,7 +32,7 @@
               >
             </div>
             <p class="informativo">Informe seus dados abaixo</p>
-            <form>
+            <form id="form-cadastro">
               <div>
                 <label class="label">
                   <span>Nome</span>
@@ -67,10 +67,10 @@
         <!-- Formulário Quantidade pessoas -->
         <div>
           <span class="descricao">2. Selecione a quantidade de pessoas</span>
-          <div id="form-participantes" class="form card">
+          <div id="participantes" class="form card">
             <h2>Participantes</h2>
             <p class="informativo">No mínimo 1 adulto</p>
-            <form>
+            <form id="form-participantes">
               <div>
                 <label class="label">
                   <span>Homens</span>
@@ -114,7 +114,7 @@
                 <button type="reset" class="btn-light" id="btn-part-reset">
                   Limpar
                 </button>
-                <button type="button" class="btn-dark" id="btn-part-submit">
+                <button type="submit" class="btn-dark" id="btn-part-submit">
                   Calcular
                 </button>
               </div>

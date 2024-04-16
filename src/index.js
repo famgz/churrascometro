@@ -1,5 +1,6 @@
-let cadastro = carregarLocalStorage();
+let dadosUsuario = carregarLocalStorage();
 
+const cadastro = document.getElementById('cadastro');
 const formCadastro = document.getElementById('form-cadastro');
 const inputNome = document.getElementById('input-nome');
 const inputEmail = document.getElementById('input-email');
@@ -9,6 +10,7 @@ const btnCadastroSubmit = document.getElementById('btn-cadastro-submit');
 const btnCadastroReset = document.getElementById('btn-cadastro-reset');
 const btnCadastroRemover = document.getElementById('icone-remover');
 
+const participantes = document.getElementById('participantes');
 const formParticipantes = document.getElementById('form-participantes');
 const inputPartHomens = document.getElementById('input-part-h');
 const inputPartMulheres = document.getElementById('input-part-m');
@@ -23,7 +25,7 @@ const resultados = document.getElementById('resultados');
 const loadingIntervalInMs = 1000;
 
 function salvarLocalStorage() {
-  localStorage.setItem('churrascometro', JSON.stringify(cadastro));
+  localStorage.setItem('churrascometro', JSON.stringify(dadosUsuario));
 }
 
 function carregarLocalStorage() {
@@ -31,20 +33,20 @@ function carregarLocalStorage() {
 }
 
 function checarCadastro() {
-  if (!cadastro) {
+  if (!dadosUsuario) {
     return;
   }
   inputNome.disabled = true;
-  inputNome.value = cadastro.nome;
+  inputNome.value = dadosUsuario.nome;
 
   inputEmail.disabled = true;
-  inputEmail.value = cadastro.email;
+  inputEmail.value = dadosUsuario.email;
 
   inputCep.disabled = true;
-  inputCep.value = cadastro.cep;
+  inputCep.value = dadosUsuario.cep;
 
   inputPromos.disabled = true;
-  inputPromos.value = cadastro.receberPromos;
+  inputPromos.value = dadosUsuario.receberPromos;
 
   btnCadastroSubmit.disabled = true;
   btnCadastroSubmit.style.cursor = 'not-allowed';
@@ -55,7 +57,7 @@ function checarCadastro() {
   btnCadastroReset.style.cursor = 'not-allowed';
   btnCadastroReset.classList.add('btn-light-disabled');
 
-  formCadastro.style.backgroundColor = '#f5f5f5';
+  cadastro.style.backgroundColor = '#f5f5f5';
 
   inserirSucesso('cadastro');
 
@@ -97,7 +99,7 @@ function obterInputsCadastro() {
 }
 
 function salvarCadastro({ nome, email, cep, receberPromos }) {
-  const nomeOuEmailExiste = cadastro?.find(
+  const nomeOuEmailExiste = dadosUsuario?.find(
     (c) => c.nome === nome || c.email === email
   );
 
@@ -113,8 +115,8 @@ function salvarCadastro({ nome, email, cep, receberPromos }) {
     receberPromos,
   };
 
-  cadastro = obj;
-  console.log(cadastro);
+  dadosUsuario = obj;
+  console.log(dadosUsuario);
   salvarLocalStorage();
 }
 
@@ -179,10 +181,10 @@ function calcularItens({ homens, mulheres, criancas, bebemAlcool }) {
 function inserirSucesso(type) {
   let status;
   if (type === 'cadastro') {
-    status = formCadastro.querySelector('.status-wrapper');
+    status = cadastro.querySelector('.status-wrapper');
     status.innerHTML = 'Cadastro realizado com sucesso! ✅';
   } else {
-    status = formParticipantes.querySelector('.status-wrapper');
+    status = participantes.querySelector('.status-wrapper');
     status.innerHTML = 'Cálculo realizado com sucesso! ✅';
   }
 }
@@ -190,9 +192,9 @@ function inserirSucesso(type) {
 function inserirSpinner(type) {
   let status;
   if (type === 'cadastro') {
-    status = formCadastro.querySelector('.status-wrapper');
+    status = cadastro.querySelector('.status-wrapper');
   } else {
-    status = formParticipantes.querySelector('.status-wrapper');
+    status = participantes.querySelector('.status-wrapper');
   }
   status.innerHTML = '<div class="spinner"></div>';
 }
@@ -200,9 +202,9 @@ function inserirSpinner(type) {
 function limparStatus(type) {
   let status;
   if (type === 'cadastro') {
-    status = formCadastro.querySelector('.status-wrapper');
+    status = cadastro.querySelector('.status-wrapper');
   } else {
-    status = formParticipantes.querySelector('.status-wrapper');
+    status = participantes.querySelector('.status-wrapper');
   }
   status.innerHTML = '';
 }
@@ -228,7 +230,7 @@ async function handleCadastroSubmit() {
 }
 
 async function handleParticipantesSubmit() {
-  if (!cadastro) {
+  if (!dadosUsuario) {
     inputNome.focus();
     alert('É necessário concluir o cadastro antes!');
     return;
@@ -264,7 +266,7 @@ btnCadastroSubmit.addEventListener('click', async (ev) => {
 
 // Remover cadastro
 btnCadastroRemover.addEventListener('click', () => {
-  if (!cadastro) {
+  if (!dadosUsuario) {
     return;
   }
   localStorage.removeItem('churrascometro');
@@ -272,7 +274,8 @@ btnCadastroRemover.addEventListener('click', () => {
 });
 
 // Realizar calculo
-btnPartSubmit.addEventListener('click', async () => {
+formParticipantes.addEventListener('submit', async (ev) => {
+  ev.preventDefault();
   try {
     await handleParticipantesSubmit();
   } catch (err) {
@@ -291,7 +294,6 @@ btnPartReset.addEventListener('click', () => {
   i.addEventListener('change', () => {
     const max =
       parseInt(inputPartHomens.value) + parseInt(inputPartMulheres.value);
-    console.log(max);
     inputPartBebemAlcool.setAttribute('max', max);
   })
 );
